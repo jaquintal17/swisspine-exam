@@ -1,0 +1,29 @@
+<mat-accordion multi>
+    <mat-expansion-panel *ngFor="let system of systems">
+        <mat-expansion-panel-header>
+            <div class="row-header">
+              <span class="system-name">{{ system.name }}</span>
+        
+              <span class="spacer"></span>
+        
+              <button
+                mat-icon-button
+                (click)="copy(system); $event.stopPropagation();"
+                (keydown)="stopKey($event)"
+              >
+                <mat-icon>content_copy</mat-icon>
+              </button>
+        
+              <button
+                mat-icon-button
+                (click)="delete(system.id); $event.stopPropagation();"
+                (keydown)="stopKey($event)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-expansion-panel-header>
+  
+      <app-external-system-details [system]="system"></app-external-system-details>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,18 @@
+<mat-form-field class="search-box">
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Type to search..." />
+    <mat-icon matPrefix>search</mat-icon>
+  </mat-form-field>
+<button mat-button color="primary" (click)="createNewPlanner()">
+    Create New Planner
+</button>
+<app-planner-list [reports]="reports" 
+                  [reportTypes]="reportTypes" 
+                  [sources]="sources"
+                  [runs]="runs" 
+                  [planners]="planners"></app-planner-list>
+<mat-paginator [length]="totalCount"
+               [pageSize]="5"
+               [pageSizeOptions]="[5, 10, 25]"
+               (page)="onPageChange($event)">
+</mat-paginator>

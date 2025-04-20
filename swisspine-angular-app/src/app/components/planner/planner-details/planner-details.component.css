@@ -1,0 +1,45 @@
+.planner-detail-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: auto;
+}
+  
+.funds-header-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.trigger-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+  
+.trigger-label {
+font-weight: 400;
+}
+
+.sources-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+}
+  
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+  
+.source-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+  

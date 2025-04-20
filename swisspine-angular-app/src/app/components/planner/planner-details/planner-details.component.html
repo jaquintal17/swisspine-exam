@@ -1,0 +1,97 @@
+<div class="planner-detail-form">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="plannerForEdit.name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="plannerForEdit.description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Planner Type</mat-label>
+    <input matInput [(ngModel)]="plannerForEdit.plannerType" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>External System</mat-label>
+    <input matInput [(ngModel)]="plannerForEdit.externalSystem.name" />
+  </mat-form-field>
+  
+  <div class="funds-header-inline">
+    <mat-label class="funds-label">Funds:</mat-label>
+    <button mat-button (click)="addFund()" aria-label="Add fund">
+      <mat-icon>add</mat-icon>
+      Add Fund
+    </button>
+  </div>
+
+  <div class="trigger-row">
+    <span class="trigger-label">Triggers:</span>
+    
+    <mat-checkbox [checked]="(plannerForEdit.triggers ?? []).includes('Runs')">Runs</mat-checkbox>
+    <mat-checkbox [checked]="(plannerForEdit.triggers ?? []).includes('Sources')">Sources</mat-checkbox>
+    <mat-checkbox [checked]="(plannerForEdit.triggers ?? []).includes('Reports')">Reports</mat-checkbox>
+  </div>
+
+  <div class="sources-wrapper">
+    <div class="header">
+      <span class="label">Sources:</span>
+      <button mat-button color="primary" (click)="addSource()">
+        <mat-icon>add</mat-icon> Add Source
+      </button>
+    </div>
+  
+    <div class="source-item" *ngFor="let source of plannerForEdit.sources; let i = index">
+      <mat-select [(ngModel)]="source.id">
+        <mat-option *ngFor="let sourceOption of sources" [value]="sourceOption.id">{{ sourceOption.name }}</mat-option>
+      </mat-select>
+      <button mat-button color="primary" (click)="removeSource(i)">
+        <mat-icon>remove</mat-icon> Remove
+      </button>
+    </div>
+  </div>
+
+  <div class="sources-wrapper">
+    <div class="header">
+      <span class="label">Runs:</span>
+      <button mat-button color="primary" (click)="addRun()">
+        <mat-icon>add</mat-icon> Add Run
+      </button>
+    </div>
+  
+    <div class="source-item" *ngFor="let run of plannerForEdit.runs; let i = index">
+      <mat-select [(ngModel)]="run.id">
+        <mat-option *ngFor="let runOption of runs" [value]="runOption.id">{{ runOption.name }}</mat-option>
+      </mat-select>
+      <button mat-button color="primary" (click)="removeRun(i)">
+        <mat-icon>remove</mat-icon> Remove
+      </button>
+    </div>
+  </div>
+
+  <div class="sources-wrapper">
+    <div class="header">
+      <span class="label">Reports:</span>
+      <button mat-button color="primary" (click)="addReport()">
+        <mat-icon>add</mat-icon> Add Report
+      </button>
+    </div>
+  
+    <div class="source-item" *ngFor="let report of plannerForEdit.reports; let i = index">
+      <mat-select [(ngModel)]="report.id">
+        <mat-option *ngFor="let reportOption of reports" [value]="reportOption.id">{{ reportOption.name }}</mat-option>
+      </mat-select>
+
+      <mat-select>
+        <mat-option *ngFor="let reportTypeOption of reportTypes" [value]="reportTypeOption.id">{{ reportTypeOption.name }}</mat-option>
+      </mat-select>
+
+      <button mat-button color="primary" (click)="removeReport(i)">
+        <mat-icon>remove</mat-icon> Remove
+      </button>
+    </div>
+  </div>
+  
+</div>

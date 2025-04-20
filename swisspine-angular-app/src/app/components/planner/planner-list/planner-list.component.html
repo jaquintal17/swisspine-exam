@@ -1,0 +1,33 @@
+<mat-accordion multi>
+    <mat-expansion-panel *ngFor="let planner of planners">
+        <mat-expansion-panel-header>
+            <div class="row-header">
+              <span class="system-name">{{ planner.name }}</span>
+               
+              <span class="owner-label">Owner: {{ planner.owner }}</span>
+
+              <span class="spacer"></span>
+        
+              <button
+                mat-icon-button
+                (click)="copy(planner); $event.stopPropagation();"
+                (keydown)="stopKey($event)"
+              >
+                <mat-icon>content_copy</mat-icon>
+              </button>
+        
+              <button
+                mat-icon-button
+                (click)="delete(planner.id); $event.stopPropagation();"
+                (keydown)="stopKey($event)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-expansion-panel-header>
+      <app-planner-details [reports]="reports" 
+      [reportTypes]="reportTypes" 
+      [sources]="sources"
+      [runs]="runs" [planner]="planner"></app-planner-details>   
+    </mat-expansion-panel>
+</mat-accordion>

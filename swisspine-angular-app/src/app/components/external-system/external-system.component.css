@@ -1,0 +1,11 @@
+.header-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0;
+  }
+  
+  .search-field {
+    flex: 1;
+    max-width: 400px;
+  }

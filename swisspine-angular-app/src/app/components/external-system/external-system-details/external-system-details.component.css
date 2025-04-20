@@ -1,0 +1,19 @@
+.external-system-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+    margin: auto;
+  
+    .auth-place-label {
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  
+    mat-radio-group {
+      display: flex;
+      gap: 24px;
+    }
+  }
+  

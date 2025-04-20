@@ -1,0 +1,35 @@
+<div class="external-system-form">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="systemForEdit.name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Base URL</mat-label>
+    <input matInput [(ngModel)]="systemForEdit.baseUrl" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Authentication Method</mat-label>
+    <mat-select [(ngModel)]="systemForEdit.authenticationMethod">
+      <mat-option *ngFor="let method of authMethods" [value]="method">{{ method }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Key</mat-label>
+    <input matInput [(ngModel)]="systemForEdit.key" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Value</mat-label>
+    <input matInput [value]="displayFilled(systemForEdit.value)" [disabled]="displayFilled(systemForEdit.value).length > 0" />
+  </mat-form-field>
+
+  <label class="auth-place-label">Authentication Place:</label>
+  <mat-radio-group [(ngModel)]="systemForEdit.authenticationPlace">
+    <mat-radio-button value="header">Header</mat-radio-button>
+    <mat-radio-button value="query">Query Parameters</mat-radio-button>
+  </mat-radio-group>
+</div>
+  

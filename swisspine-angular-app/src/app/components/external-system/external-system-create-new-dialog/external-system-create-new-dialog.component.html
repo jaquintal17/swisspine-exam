@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Create New External System</h2>
+
+<form [formGroup]="systemForm" mat-dialog-content>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Base URL</mat-label>
+    <input matInput formControlName="baseUrl">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Authentication Method</mat-label>
+    <mat-select formControlName="authenticationMethod">
+      <mat-option value="API Key">API Key</mat-option>
+      <mat-option value="OAuth">OAuth</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Key</mat-label>
+    <input matInput formControlName="key">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Value</mat-label>
+    <input matInput formControlName="value">
+  </mat-form-field>
+
+  <label>Authentication Place</label>
+  <mat-radio-group formControlName="authenticationPlace" class="full-width">
+    <mat-radio-button value="Header">Header</mat-radio-button>
+    <mat-radio-button value="Query">Query Parameters</mat-radio-button>
+  </mat-radio-group>
+</form>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpassword
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  springboot-app:
+    build:
+      context: ./swisspine
+      dockerfile: Dockerfile
+    container_name: springboot-app
+    depends_on:
+      - mongodb
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+  swisspine-angular-app:
+    build:
+      context: ./swisspine-angular-app
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    container_name: swisspine-angular-nginx-app   
+    depends_on:
+      - springboot-app
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge
